@@ -1,77 +1,82 @@
 # Terraform AWS VPC Module Project
 
-This project demonstrates how to provision a **custom AWS VPC using Terraform modules** following Infrastructure as Code (IaC) best practices.  
-The goal of this project is to build a reusable, clean, and production-ready VPC module instead of writing all resources in a single Terraform file.
+This project demonstrates how to provision a custom AWS VPC using Terraform modules by following Infrastructure as Code (IaC) best practices. Instead of defining all resources in a single Terraform file, the project focuses on building a reusable and maintainable VPC module suitable for real-world DevOps use cases.
 
----
+The project helped me gain practical understanding of AWS networking concepts and how Terraform modules improve scalability, consistency, and code reuse.
 
-## 📌 Project Overview
+## Project Overview
 
-The Terraform module creates a complete VPC networking setup on AWS, including public and private subnets, routing, and outputs that can be reused across environments.
+The Terraform configuration creates a complete AWS VPC networking setup including public and private subnets, routing, and clean outputs that can be reused by other infrastructure components.
 
-This project helped me understand real-world AWS networking concepts and how Terraform modules improve scalability and maintainability.
+## Architecture Components
 
----
+Custom VPC with CIDR block  
+Public and private subnets across Availability Zones  
+Internet Gateway  
+Public route table  
+Route table associations  
+Terraform outputs for VPC and subnet IDs  
 
-## 🧱 Architecture Components
+## Project Structure
 
-The following AWS resources are created using Terraform:
+Terraform-AWS-Modules-VPC-Project  
+│  
+├── main.tf  
+├── variables.tf  
+├── outputs.tf  
+├── versions.tf  
+├── .gitignore  
+│  
+└── modules  
+    └── vpc  
+        ├── main.tf  
+        ├── variables.tf  
+        ├── outputs.tf  
+        ├── versions.tf  
+        └── README.md  
 
-- Custom VPC with CIDR block
-- Public and Private Subnets across Availability Zones
-- Internet Gateway
-- Public Route Table
-- Route Table Associations
-- Terraform Outputs for VPC and Subnet IDs
+## Prerequisites
 
----
+Terraform version 1.x or above  
+AWS CLI configured with valid credentials  
+AWS account with required permissions  
+Git installed  
 
-## 📂 Project Structure
+## How to Use
 
-Terraform-AWS-Modules-VPC-Project/
-│
-├── main.tf
-├── variables.tf
-├── outputs.tf
-├── versions.tf
-├── .gitignore
-│
-└── modules/
-└── vpc/
-├── main.tf
-├── variables.tf
-├── outputs.tf
-├── versions.tf
-└── README.md
+Initialize Terraform  
+terraform init  
 
+Review execution plan  
+terraform plan  
 
----
+Apply infrastructure changes  
+terraform apply  
 
-## ⚙️ Prerequisites
+## Outputs
 
-- Terraform >= 1.x
-- AWS CLI configured
-- AWS account with required permissions
-- Git
+After successful execution, Terraform provides the VPC ID, public subnet IDs along with availability zones, and the private subnet ID with its availability zone. These outputs can be consumed by other modules such as EC2, Load Balancer, or EKS.
 
----
+## Security Best Practices
 
-## 🚀 How to Use
+Terraform state files are excluded using .gitignore  
+No AWS credentials are hardcoded  
+Modular and reusable infrastructure design  
 
-### 1️⃣ Initialize Terraform
-```bash
-terraform init
-terraform plan
-terraform apply
+## Learning Outcomes
 
-📤 Outputs
+Hands-on experience with Terraform modules  
+Strong understanding of AWS VPC networking  
+Practical exposure to Infrastructure as Code  
+Real-world DevOps project structuring  
 
-After successful execution, Terraform provides:
+## Future Enhancements
 
-VPC ID
+NAT Gateway for private subnets  
+Multi-AZ support  
+Environment-based configurations such as dev, stage, and prod  
+Module versioning  
 
-Public Subnet IDs with Availability Zones
+## Author
 
-Private Subnet ID with Availability Zone
-
-These outputs can be reused in other modules like EC2, ALB, or EKS.
+Sujal Shaha  
